@@ -11,3 +11,4 @@ for i in factories:
     if i == 1:
         cost += 3
         
+print('ah!!!!!!!')
