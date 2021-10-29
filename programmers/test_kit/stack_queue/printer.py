@@ -6,28 +6,42 @@
 def solution(priorities, location):
     num_prior = len(priorities)
 
-    # dummy = priorities
-
-    # for p in priorities[1:]:
-    #     if priorities[0] < p:
-    #         dummy[0], dummy[num_prior] = dummy[num_prior], dummy[0]
-
-    count = 0
-
-    if any(priorities[0] < i for i in priorities[1:]):
-        priorities.append(priorities.pop(0))
-        count += 1
+    if num_prior == 1:
+        answer = 1
+        return answer
     else:
+        count = 0
+        idx = [i for i in range(num_prior)]
 
-    
-    print(priorities)
+        while True:
+            if idx[0] == location:
+                if priorities[0] != max(priorities):
+                    pass
+                else:
+                    break
+            
+            if priorities[0] != max(priorities):
+                priorities.append(priorities.pop(0))
+                idx.append(idx.pop(0))
+            else:
+                priorities.pop(0)
+                idx.pop(0)
+                count += 1
+
+        answer = count + 1
+        return answer
 
 
-    answer = 0
-    return answer
-
-
-priorities = [1, 1, 9, 1, 1, 1]
+# priorities = [1, 1, 9, 1, 1, 1]
+# location = 0
+# priorities = [2, 1, 3, 2]
+# location = 2
+# priorities = [1, 2, 3]
+# location = 0
+priorities = [1,1,1]
 location = 0
 
-solution(priorities, location)
+
+answer = solution(priorities, location)
+
+print('답', answer)
